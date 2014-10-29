@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://corpwsdl2.oneninetwo" xmlns:types="http://corpwsdl2.oneninetwo/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+		<tns:search>
+			<xml xsi:type="xsd:string">
+				<![CDATA[
+					<Search>
+						<Authentication>
+							<Username>{{ system.auth.username }}</Username>
+							<Password>{{ system.auth.password }}</Password>
+						</Authentication>
+						<CountryCode>{{ system.country }}</CountryCode>
+						<Person>
+							<Name>
+								<Forename>{{ user.forename }}</Forename>
+								<Surname>{{ user.surname }}</Surname>
+							</Name>
+							<DateOfBirth>{{ user.dob }}</DateOfBirth>
+							<Gender>{{ user.gender }}</Gender>
+						</Person>
+						<Addresses>
+							<Address Current="1">
+								<Premise>{{ user.address.premise }}</Premise>
+								<Postcode>{{ user.address.postcode }}</Postcode>
+								<CountryCode>{{ user.address.country }}</CountryCode>
+							</Address>
+						</Addresses>
+						<Passport>
+							<PassportNumber>{{ user.passport }}</PassportNumber>
+						</Passport>
+						<DriverLicence>
+							<DriverLicenceNumber>{{ user.driverlicence }}</DriverLicenceNumber>
+						</DriverLicence>
+						<SearchOptions>
+							<ProductCode>{{ system.product }}</ProductCode>
+						</SearchOptions>
+					</Search>
+				]]>
+			</xml>
+		</tns:search>
+	</soap:Body>
+</soap:Envelope>
